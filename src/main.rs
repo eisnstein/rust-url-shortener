@@ -26,6 +26,10 @@ struct AppState {
 
 #[tokio::main]
 async fn main() {
+    tracing_subscriber::fmt()
+        .with_max_level(tracing::Level::DEBUG)
+        .init();
+
     let state = AppState {
         short_urls: Arc::new(Mutex::new(HashMap::new())),
     };
@@ -38,7 +42,7 @@ async fn main() {
     let addr = "127.0.0.1:3000".parse().unwrap();
     let server = Server::bind(&addr).serve(app.into_make_service());
 
-    println!("Listening on {addr}...");
+    tracing::debug!("Listening on {addr}...");
 
     server.await.unwrap();
 }
