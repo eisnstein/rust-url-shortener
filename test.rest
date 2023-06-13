@@ -1,6 +1,6 @@
 ### Get Full Url by id
 
-GET http://localhost:3000/huVMLlW
+GET http://localhost:3000/so3LljD
 
 ### Shorten Url
 
